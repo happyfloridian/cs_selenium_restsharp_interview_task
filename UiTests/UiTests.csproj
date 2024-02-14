@@ -22,9 +22,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Pages\" />
       <Folder Include="UiTests\" />
-      <Folder Include="Utilities\" />
     </ItemGroup>
 
 </Project>
