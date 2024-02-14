@@ -19,11 +19,11 @@ public class SiteNavigationTest : Driver
         
         overviewPage.GetListOfCompanyValues();
         
-        Assert.That(overviewPage.GetListOfCompanyValues().Count == 4);
+        Assert.That(overviewPage.GetListOfCompanyValues().Count == 4, "List of company values doesn't have 4 values.");
         
         overviewPage.ClickLetsGetStartedButton();
         
-        Assert.That(contactPage.VerifyContactPageIsLoaded());
+        Assert.That(contactPage.VerifyContactPageIsLoaded(), "Contact page not loaded");
     }
     
 }
