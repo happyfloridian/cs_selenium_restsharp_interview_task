@@ -23,7 +23,7 @@ public class CommentsEndpointsTests : ApiBase
         var request = new RestRequest($"posts/{idOfPostToComment}/comments", Method.Post);
         var response = client.Post(request);
 
-        Assert.That((int)response.StatusCode, Is.EqualTo(201));
+        Assert.That((int)response.StatusCode, Is.EqualTo(201), "Response code doesn't match");
         
         //the site doesn't seem to actually record the comment
         //so I can't continue the test with a GET to check the content
@@ -37,15 +37,15 @@ public class CommentsEndpointsTests : ApiBase
         var response = client.Get(request);
         var deserialized = JsonSerializer.Deserialize<List<GetCommentsPoco>>(response.Content);
 
-        Assert.That((int)response.StatusCode, Is.EqualTo(200));
+        Assert.That((int)response.StatusCode, Is.EqualTo(200), "Response code doesn't match");
         
         foreach (var each in deserialized)
         {
-            Assert.That(each.PostId, Is.EqualTo(idOfPost));
-            Assert.That(each.Id, Is.Not.EqualTo(null));
-            Assert.That(each.Name, Is.Not.Null);
-            Assert.That(each.Email, Is.Not.Null);
-            Assert.That(each.Body, Is.Not.Null);
+            Assert.That(each.PostId, Is.EqualTo(idOfPost), "Actual PostId doesn't match Id of post to see comments for");
+            Assert.That(each.Id, Is.Not.EqualTo(null), "Null Id found");
+            Assert.That(each.Name, Is.Not.Null, "Null name field found");
+            Assert.That(each.Email, Is.Not.Null, "Null email field found");
+            Assert.That(each.Body, Is.Not.Null, "Null body field found");
         }
     }
 }
