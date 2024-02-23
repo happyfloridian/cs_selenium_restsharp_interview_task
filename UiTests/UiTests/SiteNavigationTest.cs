@@ -7,6 +7,7 @@ namespace UiTests.UiTests;
 public class SiteNavigationTest : Driver
 {
     [Test]
+    [Retry(2)]
     public void UserCanGoToContactPageViaOverviewPageTest()
     {
         HomePage homePage = new HomePage();

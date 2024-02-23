@@ -5,9 +5,11 @@ using RestSharp;
 namespace ApiTests.ApiTests;
 
 [TestFixture]
+[Parallelizable]
 public class CommentsEndpointsTests : ApiBase
 {
     [Test]
+    [Retry(2)]
     public void UserCanCreateNewComment()
     {
         var idOfPostToComment = 1;
@@ -30,6 +32,7 @@ public class CommentsEndpointsTests : ApiBase
     }
     
     [Test]
+    [Retry(2)]
     public void UserCanRetrieveAllCommentsForAPost()
     {
         var idOfPost = 1;

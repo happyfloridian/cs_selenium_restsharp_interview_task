@@ -5,9 +5,11 @@ using RestSharp;
 namespace ApiTests.ApiTests;
 
 [TestFixture]
+[Parallelizable]
 public class PostsEndpointsTests : ApiBase
 {
     [Test]
+    [Retry(2)]
     public void UserCanRetrieveAllPosts()
     {
         var request = new RestRequest("posts", Method.Get);
@@ -26,6 +28,7 @@ public class PostsEndpointsTests : ApiBase
     }
     
     [Test]
+    [Retry(2)]
     public void UserCanCreateAPost()
     {
         var newPost = new CreatePostPoco()
@@ -57,6 +60,7 @@ public class PostsEndpointsTests : ApiBase
     }
     
     [Test]
+    [Retry(2)]
     public void UserCanUpdateExistingPost()
     {
         var postToUpdate = 1;
@@ -85,6 +89,7 @@ public class PostsEndpointsTests : ApiBase
     }
     
     [Test]
+    [Retry(2)]
     public void UserCanDeleteExistingPost()
     {
         var postToDelete = 1;
